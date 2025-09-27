@@ -4,7 +4,7 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   title: "Joe 的文档与笔记",
   description: "文档与笔记",
-  base: "/Jo-s-notes/",
+  base: "/notes/",
   themeConfig: {
     logo: '/react.svg',
     search: {
