@@ -3,23 +3,20 @@
 layout: home
 
 hero:
-  name: "My Awesome Project"
-  text: "A VitePress Site"
-  tagline: My great project tagline
+  name: "Joe 的文档与笔记"
+  text: "文档与笔记"
+  tagline: 前端相关文档
   actions:
     - theme: brand
-      text: Markdown Examples
-      link: /markdown-examples
-    - theme: alt
-      text: API Examples
-      link: /api-examples
+      text: 前端性能优化
+      link: /document/performance/uploading/introduce
+  image:
+    src: /react.svg
 
 features:
-  - title: Feature A
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature B
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
-  - title: Feature C
-    details: Lorem ipsum dolor sit amet, consectetur adipiscing elit
+  - icon:
+      src: /react.svg
+    title: Simple and minimal, always
+    details: Lorem ipsum... 
 ---
 
