@@ -23,7 +23,6 @@ jobs:
         with:
           fetch-depth: 0
       
-      # 添加 pnpm 安装步骤
       - name: Setup pnpm
         uses: pnpm/action-setup@v4
         with:
@@ -34,18 +33,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'  # 启用 pnpm 缓存
+          cache: 'pnpm'
       
       - name: Install dependencies
         run: pnpm install
       
       - name: Build with VitePress
-        run: pnpm docs:build
+        run: |
+          pnpm docs:build
+          # 确保构建后创建 .nojekyll
+          find . -name "dist" -type d -exec touch {}/.nojekyll \;
+      
+      - name: Verify build output
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Looking for dist directories:"
+          find . -name "dist" -type d
+          echo "Looking for index.html files:"
+          find . -name "index.html" -type f
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: docs/.vitepress/dist
+          # 根据你的项目结构调整路径
+          path: docs/.vitepress/dist/
 
   deploy:
     environment:
