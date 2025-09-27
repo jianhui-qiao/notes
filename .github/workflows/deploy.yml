@@ -23,21 +23,24 @@ jobs:
         with:
           fetch-depth: 0
       
+      # 添加 pnpm 安装步骤
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 9
+          run_install: false
+      
       - name: Setup Node
         uses: actions/setup-node@v4
         with:
           node-version: 22
-          cache: 'pnpm'
+          cache: 'pnpm'  # 启用 pnpm 缓存
       
       - name: Install dependencies
         run: pnpm install
       
       - name: Build with VitePress
         run: pnpm docs:build
-      
-      - name: Setup Pages
-        uses: actions/configure-pages@v4
-        # 移除了 enablement 参数，让 Action 自动处理
       
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
